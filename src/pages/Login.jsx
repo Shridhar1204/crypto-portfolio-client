@@ -24,7 +24,9 @@ function Login() {
     }
 
     try {
-      const url = "http://localhost:8080/auth/login";
+      // const url = "http://localhost:8080/auth/login";
+      const url = `${import.meta.env.VITE_BACKEND_URL}/auth/login`;
+
       const response = await fetch(url, {
         method: "POST",
         headers: {
