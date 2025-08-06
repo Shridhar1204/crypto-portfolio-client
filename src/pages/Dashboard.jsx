@@ -90,12 +90,17 @@ const Dashboard = () => {
   const handleSaveClick = async (id) => {
     try {
       const token = localStorage.getItem("token");
+      // const res = await axios.put(
+      //   `http://localhost:8080/holdings/${id}`,
+      //   { quantity: newQuantity },
+      //   { headers: { Authorization: `Bearer ${token}` } }
+      // );
+
       const res = await axios.put(
-        `http://localhost:8080/holdings/${id}`,
+        `https://crypto-portfolio-backend.onrender.com/holdings/${id}`,
         { quantity: newQuantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       if (res.data.success) {
         setEditId(null);
         fetchHoldings();
