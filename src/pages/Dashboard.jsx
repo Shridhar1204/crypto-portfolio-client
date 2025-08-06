@@ -17,7 +17,8 @@ const Dashboard = () => {
       const token = localStorage.getItem("token");
 
       const holdingResponse = await axios.get(
-        "http://localhost:8080/holdings/get",
+        // "http://localhost:8080/holdings/get"
+        "https://crypto-portfolio-backend.onrender.com/holdings/get",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -25,7 +26,8 @@ const Dashboard = () => {
       setHoldings(holdingResponse.data.holdings);
 
       const statsResponse = await axios.get(
-        "http://localhost:8080/holdings/stats",
+        // "http://localhost:8080/holdings/stats"
+        "https://crypto-portfolio-backend.onrender.com/holdings/stats",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -64,9 +66,15 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:8080/holdings/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      // await axios.delete(`http://localhost:8080/holdings/${id}`, {
+      //   headers: { Authorization: `Bearer ${token}` },
+      // });
+      await axios.delete(
+        `https://crypto-portfolio-backend.onrender.com/holdings/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setHoldings((prev) => prev.filter((h) => h._id !== id));
     } catch (err) {
       console.error(err);
@@ -227,7 +235,8 @@ const AddHoldingForm = ({ onAdd }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:8080/holdings/add",
+        // "http://localhost:8080/holdings/add"
+        "https://crypto-portfolio-backend.onrender.com/holdings/add",
         {
           coinName,
           quantity,

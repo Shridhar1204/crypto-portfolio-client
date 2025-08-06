@@ -13,9 +13,13 @@ const Home = () => {
   const fetchValue = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:8080/holdings/stats", {
-        headers: { Authorization: token },
-      });
+      // const response = await axios.get("http://localhost:8080/holdings/stats", {
+      const response = await axios.get(
+        "https://crypto-portfolio-backend.onrender.com/holdings/stats",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setValue({ totalPortfolio: response.data.totalCurrentValue });
     } catch (err) {
       console.error("Error fetching portfolio:", err);
@@ -124,21 +128,49 @@ const Home = () => {
                   <tr key={coin.id} className="hover:bg-gray-700 transition">
                     <td className="py-3 px-4">{index + 1}</td>
                     <td className="py-3 px-4 flex items-center gap-2">
-                      <img src={coin.image} alt={coin.name} className="w-6 h-6" />
+                      <img
+                        src={coin.image}
+                        alt={coin.name}
+                        className="w-6 h-6"
+                      />
                       <span>{coin.name}</span>
-                      <span className="text-gray-400 text-xs">({coin.symbol.toUpperCase()})</span>
+                      <span className="text-gray-400 text-xs">
+                        ({coin.symbol.toUpperCase()})
+                      </span>
                     </td>
-                    <td className="py-3 px-4">${coin.current_price.toLocaleString()}</td>
-                    <td className={`py-3 px-4 ${coin.price_change_percentage_1h_in_currency > 0 ? "text-green-400" : "text-red-400"}`}>
+                    <td className="py-3 px-4">
+                      ${coin.current_price.toLocaleString()}
+                    </td>
+                    <td
+                      className={`py-3 px-4 ${
+                        coin.price_change_percentage_1h_in_currency > 0
+                          ? "text-green-400"
+                          : "text-red-400"
+                      }`}
+                    >
                       {coin.price_change_percentage_1h_in_currency?.toFixed(2)}%
                     </td>
-                    <td className={`py-3 px-4 ${coin.price_change_percentage_24h > 0 ? "text-green-400" : "text-red-400"}`}>
+                    <td
+                      className={`py-3 px-4 ${
+                        coin.price_change_percentage_24h > 0
+                          ? "text-green-400"
+                          : "text-red-400"
+                      }`}
+                    >
                       {coin.price_change_percentage_24h?.toFixed(2)}%
                     </td>
-                    <td className={`py-3 px-4 ${coin.price_change_percentage_7d_in_currency > 0 ? "text-green-400" : "text-red-400"}`}>
+                    <td
+                      className={`py-3 px-4 ${
+                        coin.price_change_percentage_7d_in_currency > 0
+                          ? "text-green-400"
+                          : "text-red-400"
+                      }`}
+                    >
                       {coin.price_change_percentage_7d_in_currency?.toFixed(2)}%
                     </td>
-                    <td className="py-3 px-4">${coin.market_cap.toLocaleString()}</td>
+                    <td className="py-3 px-4">
+                      ${coin.market_cap.toLocaleString()}
+                    </td>
                   </tr>
                 ))
               )}
