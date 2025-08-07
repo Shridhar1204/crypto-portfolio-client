@@ -26,7 +26,7 @@ function Signup() {
 
     try {
       // const url = "http://localhost:8080/auth/signup";
-      const url = "https://crypto-portfolio-backend.onrender.com/auth/signup";
+      const url = "https://crypto-portfolio-server.onrender.com/auth/signup";
 
       // const url = `${import.meta.env.VITE_BACKEND_URL}/auth/signup`;
 

@@ -15,7 +15,7 @@ const Home = () => {
       const token = localStorage.getItem("token");
       // const response = await axios.get("http://localhost:8080/holdings/stats", {
       const response = await axios.get(
-        "https://crypto-portfolio-backend.onrender.com/holdings/stats",
+        "https://crypto-portfolio-server.onrender.com/holdings/stats",
         {
           headers: { Authorization: `Bearer ${token}` },
         }

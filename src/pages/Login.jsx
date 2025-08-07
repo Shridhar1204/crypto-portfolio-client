@@ -25,7 +25,7 @@ function Login() {
 
     try {
       // const url = "http://localhost:8080/auth/login";
-      const url = "https://crypto-portfolio-backend.onrender.com/auth/login";
+      const url = "https://crypto-portfolio-server.onrender.com/auth/login";
 
 
       const response = await fetch(url, {

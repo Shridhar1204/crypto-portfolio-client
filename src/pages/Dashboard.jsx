@@ -18,7 +18,7 @@ const Dashboard = () => {
 
       const holdingResponse = await axios.get(
         // "http://localhost:8080/holdings/get"
-        "https://crypto-portfolio-backend.onrender.com/holdings/get",
+        "https://crypto-portfolio-server.onrender.com/holdings/get",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
       const statsResponse = await axios.get(
         // "http://localhost:8080/holdings/stats"
-        "https://crypto-portfolio-backend.onrender.com/holdings/stats",
+        "https://crypto-portfolio-server.onrender.com/holdings/stats",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -70,7 +70,7 @@ const Dashboard = () => {
       //   headers: { Authorization: `Bearer ${token}` },
       // });
       await axios.delete(
-        `https://crypto-portfolio-backend.onrender.com/holdings/${id}`,
+        `https://crypto-portfolio-server.onrender.com/holdings/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -97,7 +97,7 @@ const Dashboard = () => {
       // );
 
       const res = await axios.put(
-        `https://crypto-portfolio-backend.onrender.com/holdings/${id}`,
+        `https://crypto-portfolio-server.onrender.com/holdings/${id}`,
         { quantity: newQuantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );
